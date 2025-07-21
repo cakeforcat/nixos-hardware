@@ -5,7 +5,6 @@
 }: {
   imports = [
     ../../../common/cpu/amd
-    ../../../common/gpu/nvidia/prime.nix
     ../../../common/gpu/nvidia/prime-sync.nix
     ../../../common/gpu/nvidia/turing
     ../../../common/pc/laptop
