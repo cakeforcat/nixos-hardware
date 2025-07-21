@@ -1,6 +1,8 @@
-{ lib, ... }:
-
 {
+  lib,
+  config,
+  ...
+}: {
   imports = [
     ../../../common/cpu/amd
     ../../../common/gpu/nvidia/prime.nix
@@ -10,7 +12,7 @@
   ];
 
   # Specify bus id of Nvidia and AMD graphics.
-  hardware.nvidia = { 
+  hardware.nvidia = {
     prime = {
       amdgpuBusId = "PCI:6:0:0";
       nvidiaBusId = "PCI:1:0:0";
@@ -19,14 +21,14 @@
   };
 
   # legion and nvidia kernel module
-  boot= { 
+  boot = {
     extraModulePackages = with config.boot.kernelPackages; [
       lenovo-legion-module
       nvidia_x11
-      ];
-    kernelModules = [ "amdgpu" ];
+    ];
+    kernelModules = ["amdgpu"];
   };
-  
+
   services.xserver.videoDrivers = [
     "amdgpu"
   ];
