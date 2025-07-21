@@ -18,4 +18,6 @@
   # Cooling management
   services.thermald.enable = lib.mkDefault true;
 
+  services.xserver.videoDrivers = lib.mkDefault [ "amdgpu" ];
+
 }
