@@ -3,6 +3,7 @@
 {
   imports = [
     ../../../common/cpu/amd
+    ../../../common/gpu/amd
     ../../../common/gpu/nvidia/prime.nix
     ../../../common/gpu/nvidia/turing
     ../../../common/pc/laptop
@@ -17,7 +18,4 @@
 
   # Cooling management
   services.thermald.enable = lib.mkDefault true;
-
-  services.xserver.videoDrivers = lib.mkDefault [ "amdgpu" ];
-
 }
