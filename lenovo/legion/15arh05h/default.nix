@@ -5,6 +5,7 @@
 }: {
   imports = [
     ../../../common/cpu/amd
+    ../../../common/gpu/amd
     ../../../common/gpu/nvidia/prime.nix
     ../../../common/gpu/nvidia/turing
     ../../../common/pc/laptop
@@ -26,7 +27,6 @@
       lenovo-legion-module
       nvidia_x11
     ];
-    kernelModules = ["amdgpu"];
   };
 
   services.xserver.videoDrivers = [
