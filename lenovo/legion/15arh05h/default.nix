@@ -14,13 +14,20 @@
   # Specify bus id of Nvidia and AMD graphics.
   hardware.nvidia = {
     prime = {
-      reverseSync.enable = lib.mkOverride 990 true; # Enable reverse PRIME sync
       amdgpuBusId = "PCI:6:0:0";
       nvidiaBusId = "PCI:1:0:0";
     };
   };
 
-  # legion and nvidia kernel module
+  specialisation.hybrid-gfx.configuration = {
+    system.nixos.tags = [ "hybrid-gfx" ];
+    hardware.nvidia.prime = {
+      reverseSync.enable = lib.mkOverride 990 true; # Enable reverse PRIME sync
+      sync.enable = lib.mkForce false;    
+    };
+  };
+
+  # legion kernel module
   boot = {
     extraModulePackages = with config.boot.kernelPackages; [
       lenovo-legion-module
