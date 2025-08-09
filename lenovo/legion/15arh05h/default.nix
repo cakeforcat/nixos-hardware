@@ -19,6 +19,9 @@
     };
   };
 
+  hardware.graphics.enable = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+
   specialisation.hybrid-gfx.configuration = {
     system.nixos.tags = [ "hybrid-gfx" ];
     hardware.nvidia.prime = {
