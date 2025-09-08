@@ -20,7 +20,6 @@
   };
 
   hardware.graphics.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
 
   specialisation.hybrid-gfx.configuration = {
     system.nixos.tags = [ "hybrid-gfx" ];
