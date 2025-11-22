@@ -87,6 +87,7 @@
           asus-zenbook-ux535 = import ./asus/zenbook/ux535;
           asus-zenbook-ux481-intelgpu = import ./asus/zenbook/ux481/intelgpu;
           asus-zenbook-ux481-nvidia = import ./asus/zenbook/ux481/nvidia;
+          asus-zephyrus-ga401iv = import ./asus/zephyrus/ga401iv;
           asus-zephyrus-ga401 = import ./asus/zephyrus/ga401;
           asus-zephyrus-ga402 = import ./asus/zephyrus/ga402;
           asus-zephyrus-ga402x = import ./asus/zephyrus/ga402x;
@@ -229,6 +230,7 @@
           lenovo-legion-16ithg6 = import ./lenovo/legion/16ithg6;
           lenovo-legion-16irx8h = import ./lenovo/legion/16irx8h;
           lenovo-legion-16irx9h = import ./lenovo/legion/16irx9h;
+          lenovo-legion-16iax10h = import ./lenovo/legion/16iax10h;
           lenovo-legion-t526amr5 = import ./lenovo/legion/t526amr5;
           lenovo-legion-y530-15ich = import ./lenovo/legion/15ich;
           lenovo-thinkpad = import ./lenovo/thinkpad;
@@ -364,6 +366,7 @@
           nxp-imx8mq-evk = import ./nxp/imx8mq-evk;
           nxp-imx8qm-mek = import ./nxp/imx8qm-mek;
           nxp-imx93-evk = import ./nxp/imx93-evk;
+          ucm-imx95 = import ./compulab/ucm-imx95;
           hardkernel-odroid-hc4 = import ./hardkernel/odroid-hc4;
           hardkernel-odroid-h3 = import ./hardkernel/odroid-h3;
           hardkernel-odroid-h4 = import ./hardkernel/odroid-h4;
@@ -424,16 +427,16 @@
           common-cpu-amd-zenpower = import ./common/cpu/amd/zenpower.nix;
           common-cpu-amd-raphael-igpu = import ./common/cpu/amd/raphael/igpu.nix;
           common-cpu-intel = import ./common/cpu/intel;
-          common-gpu-intel-comet-lake =
-            deprecated "992" "common-gpu-intel-comet-lake"
-              (import ./common/gpu/intel/comet-lake);
+          common-gpu-intel-comet-lake = deprecated "992" "common-gpu-intel-comet-lake" (
+            import ./common/gpu/intel/comet-lake
+          );
           common-cpu-intel-cpu-only = import ./common/cpu/intel/cpu-only.nix;
-          common-gpu-intel-kaby-lake =
-            deprecated "992" "common-gpu-intel-kaby-lake"
-              (import ./common/gpu/intel/kaby-lake);
-          common-gpu-intel-sandy-bridge =
-            deprecated "992" "common-gpu-intel-sandy-bridge"
-              (import ./common/gpu/intel/sandy-bridge);
+          common-gpu-intel-kaby-lake = deprecated "992" "common-gpu-intel-kaby-lake" (
+            import ./common/gpu/intel/kaby-lake
+          );
+          common-gpu-intel-sandy-bridge = deprecated "992" "common-gpu-intel-sandy-bridge" (
+            import ./common/gpu/intel/sandy-bridge
+          );
           common-gpu-amd = import ./common/gpu/amd;
           common-gpu-amd-sea-islands = import ./common/gpu/amd/sea-islands;
           common-gpu-amd-southern-islands = import ./common/gpu/amd/southern-islands;
@@ -461,10 +464,18 @@
 
       # Add packages
       packages = eachSystem (
-        pkgs: _system: {
+        pkgs: system:
+        {
           run-tests = pkgs.callPackage ./tests/run-tests.nix {
             inherit self;
           };
+        }
+        // pkgs.lib.optionalAttrs (system == "aarch64-linux") {
+          # Boot images for NXP i.MX boards (aarch64-linux only)
+          ucm-imx95-boot = (pkgs.callPackage ./compulab/ucm-imx95/bsp/ucm-imx95-boot.nix { }).imx95-boot;
+          imx93-boot = (pkgs.callPackage ./nxp/imx93-evk/bsp/imx93-boot.nix { }).imx93-boot;
+          imx8mp-boot = (pkgs.callPackage ./nxp/imx8mp-evk/bsp/imx8mp-boot.nix { }).imx8m-boot;
+          imx8mq-boot = (pkgs.callPackage ./nxp/imx8mq-evk/bsp/imx8mq-boot.nix { }).imx8m-boot;
         }
       );
 

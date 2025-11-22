@@ -7,7 +7,7 @@
   nixpkgs.hostPlatform.system = "aarch64-linux";
 
   boot = {
-    kernelPackages = pkgs.linuxPackagesFor (pkgs.callPackage ./bsp/imx8mp-linux.nix { });
+    kernelPackages = pkgs.linuxPackagesFor (pkgs.callPackage ./bsp/ucm-imx95-linux.nix { });
     initrd.includeDefaultModules = lib.mkForce false;
   };
 
