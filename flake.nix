@@ -65,6 +65,7 @@
           apple-macbook-pro-14-1 = import ./apple/macbook-pro/14-1;
           apple-macmini-4-1 = import ./apple/macmini/4;
           apple-t2 = import ./apple/t2;
+          asrock-rack-altrad8ud-1l2t = import ./asrock-rack/altrad8ud-1l2t;
           asus-battery = import ./asus/battery.nix;
           asus-ally-rc71l = import ./asus/ally/rc71l;
           asus-fx504gd = import ./asus/fx504gd;
@@ -74,6 +75,7 @@
           asus-fa507rm = import ./asus/fa507rm;
           asus-flow-gv302x-amdgpu = import ./asus/flow/gv302x/amdgpu;
           asus-flow-gv302x-nvidia = import ./asus/flow/gv302x/nvidia;
+          asus-flow-gz301vu = import ./asus/flow/gz301vu;
           asus-pro-ws-x570-ace = import ./asus/pro-ws-x570-ace;
           asus-rog-gl552vw = import ./asus/rog-gl552vw;
           asus-rog-strix-g513im = import ./asus/rog-strix/g513im;
@@ -173,6 +175,7 @@
           framework-amd-ai-300-series = import ./framework/13-inch/amd-ai-300-series;
           framework-16-7040-amd = import ./framework/16-inch/7040-amd;
           framework-16-amd-ai-300-series = import ./framework/16-inch/amd-ai-300-series;
+          framework-16-amd-ai-300-series-nvidia = import ./framework/16-inch/amd-ai-300-series/nvidia;
           framework-desktop-amd-ai-max-300-series = import ./framework/desktop/amd-ai-max-300-series;
           friendlyarm-nanopc-t4 = import ./friendlyarm/nanopc-t4;
           friendlyarm-nanopi-r5s = import ./friendlyarm/nanopi-r5s;
@@ -237,6 +240,7 @@
           lenovo-thinkpad-a475 = import ./lenovo/thinkpad/a475;
           lenovo-thinkpad-e14-amd = import ./lenovo/thinkpad/e14/amd;
           lenovo-thinkpad-e14-intel = import ./lenovo/thinkpad/e14/intel;
+          lenovo-thinkpad-e14-intel-gen2 = import ./lenovo/thinkpad/e14/intel/gen2;
           lenovo-thinkpad-e14-intel-gen4 = import ./lenovo/thinkpad/e14/intel/gen4;
           lenovo-thinkpad-e14-intel-gen6 = import ./lenovo/thinkpad/e14/intel/gen6;
           lenovo-thinkpad-e15-intel = import ./lenovo/thinkpad/e15/intel;
@@ -387,6 +391,7 @@
           purism-librem-13v3 = import ./purism/librem/13v3;
           purism-librem-15v3 = import ./purism/librem/15v3;
           purism-librem-5r4 = import ./purism/librem/5r4;
+          razer-blade-14-RZ09-0530 = import ./razer/blade/14/RZ09-0530;
           raspberry-pi-2 = import ./raspberry-pi/2;
           raspberry-pi-3 = import ./raspberry-pi/3;
           raspberry-pi-4 = import ./raspberry-pi/4;
@@ -447,6 +452,7 @@
           common-gpu-nvidia-nonprime = import ./common/gpu/nvidia;
           common-gpu-nvidia-disable = import ./common/gpu/nvidia/disable.nix;
           common-hidpi = import ./common/hidpi.nix;
+          common-networking-intel-x550 = import ./common/networking/intel/x550;
           common-pc = import ./common/pc;
           common-pc-hdd = import ./common/pc/hdd;
           common-pc-laptop = import ./common/pc/laptop;
